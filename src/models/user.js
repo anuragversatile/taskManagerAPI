@@ -32,8 +32,7 @@ if(!validator.isEmail(value)){
     minlength:7,
     trim:true,
     validate(value){
-      // if(value.length<6)
-      // throw new Error('Value must be greater then 6')
+    
       if(value.includes('password'))
       throw new Error("value must not contain string password")
     }
@@ -92,7 +91,7 @@ userSchema.statics.findByCredentials=async(email,password)=>{
 
 
 
-//hash the plain text passwordn before saving
+
 userSchema.pre('save',async function(next){
   const user=this
 if(user.isModified('password')){
